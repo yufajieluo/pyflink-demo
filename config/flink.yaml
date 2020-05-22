@@ -1,0 +1,49 @@
+---
+default:
+  job_name: badboy
+
+source:
+  type: kafka
+  table: table_source
+
+sink:
+  type: mysql
+  table: table_sink
+
+file:
+  format_type: default
+  path: /tmp/result
+
+kafka:
+  format_type: csv
+  topic: wsflink
+  zookeeper_connect: localhost:2181
+  bootstrap_servers: localhost:9092
+
+mysql:
+  format_type: default
+  engine: jdbc
+  connstr: jdbc:mysql://localhost:3306/flink
+  intable: 'boy'
+  user: 'flink'
+  pswd: 'flink'
+
+logging:
+  version: 1
+  disable_existing_loggers: false
+  formatters: 
+    default: 
+      format: "[%(asctime)s] [%(process)d] [%(thread)d] [%(filename)20s] [line:%(lineno)4d] [%(levelname)-6s] %(message)s"
+  handlers:
+    default:
+      level: DEBUG
+      formatter: default
+      class: logging.FileHandler
+      encoding: utf8
+      filename: /var/log/pyflink/FILE.log
+  loggers:
+    default:
+      handlers: 
+        - default
+      level: DEBUG
+      propagate: false
