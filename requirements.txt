@@ -17,7 +17,7 @@ mock==2.0.0
 numpy==1.18.4
 oauth2client==3.0.0
 pbr==5.4.5
-protobuf==3.11.3
+protobuf==3.15.0
 py4j==0.10.8.1
 pyarrow==0.13.0
 pyasn1==0.4.8
